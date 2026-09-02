@@ -1,0 +1,368 @@
+html, body {
+  position: relative;
+}
+
+@font-face {
+  font-family: 'Satoshi';
+  src: url('/fonts/Satoshi-Regular.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Satoshi';
+  src: url('/fonts/Satoshi-Medium.otf') format('opentype');
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Satoshi';
+  src: url('/fonts/Satoshi-Bold.otf') format('opentype');
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'GeogrotesqueCyr';
+  src: url('/fonts/GeogrotesqueCyr-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'GeogrotesqueCyr';
+  src: url('/fonts/GeogrotesqueCyr-Medium.ttf') format('truetype');
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'GeogrotesqueCyr';
+  src: url('/fonts/GeogrotesqueCyr-SemiBold.ttf') format('truetype');
+  font-weight: 600;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'GeogrotesqueCyr';
+  src: url('/fonts/GeogrotesqueCyr-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Teko';
+  src: url('/fonts/Teko-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Teko';
+  src: url('/fonts/Teko-Medium.ttf') format('truetype');
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'PlusJakartaSans';
+  src: url('/fonts/PlusJakartaSans-Light.ttf') format('truetype');
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'PlusJakartaSans';
+  src: url('/fonts/PlusJakartaSans-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'PlusJakartaSans';
+  src: url('/fonts/PlusJakartaSans-Medium.ttf') format('truetype');
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'PlusJakartaSans';
+  src: url('/fonts/PlusJakartaSans-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Exo2';
+  src: url('/fonts/Exo2-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Exo2';
+  src: url('/fonts/Exo2-Medium.ttf') format('truetype');
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Exo2';
+  src: url('/fonts/Exo2-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+}
+
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Satoshi", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "GeogrotesqueCyr", "Geogrotesque", "Satoshi", ui-sans-serif, system-ui, sans-serif;
+  --font-accent: "GeogrotesqueCyr", "Geogrotesque Cyrillic", "Geogrotesque", "Satoshi", ui-sans-serif, system-ui, sans-serif;
+  --font-teko: "Teko", sans-serif;
+  --font-jakarta: "PlusJakartaSans", sans-serif;
+  --font-exo: "Exo2", sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+  
+  --color-athena-navy: var(--athena-navy);
+  --color-athena-cream: var(--athena-cream);
+  --color-athena-peach: var(--athena-peach);
+  --color-athena-sage: var(--athena-sage);
+  --color-athena-surface: var(--athena-surface);
+  
+  --radius-athena: 24px;
+}
+
+:root {
+  --athena-navy: #152532;
+  --athena-cream: #FFFFFF;
+  --athena-peach: #4a8c87; /* Darker teal for accessibility */
+  --athena-peach-bright: #66aba5; /* Original teal for accents */
+  --athena-sage: #F0F0F0;
+  --athena-surface: #F8F8F8;
+  --athena-shadow: 0 20px 50px rgba(21, 37, 50, 0.1);
+}
+
+.dark {
+  --athena-navy: #E8E6E3; /* Soft eggshell cream text for visual comfort */
+  --athena-cream: #0B151F; /* Deep premium slate-navy background */
+  --athena-peach: #88c9c4;
+  --athena-peach-bright: #88c9c4;
+  --athena-sage: #1c2e3d;
+  --athena-surface: #152532;
+  --athena-shadow: 0 30px 60px rgba(0, 0, 0, 0.4), 0 0 20px rgba(136, 201, 196, 0.05);
+}
+
+@layer base {
+  html.lenis, html.lenis body {
+    height: auto;
+  }
+
+  .lenis.lenis-smooth {
+    scroll-behavior: auto !important;
+  }
+
+  .lenis.lenis-smooth [data-lenis-prevent] {
+    overscroll-behavior: contain;
+  }
+
+  .lenis.lenis-stopped {
+    overflow: hidden;
+  }
+
+  .lenis.lenis-scrolling iframe {
+    pointer-events: none;
+  }
+
+  body {
+    @apply bg-athena-cream text-athena-navy font-sans antialiased transition-colors duration-300;
+    line-height: 1.75;
+    letter-spacing: 0.015em;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  
+  h1, h2, h3, h4 {
+    @apply font-display font-medium tracking-tighter;
+    line-height: 1.05;
+  }
+
+  p {
+    @apply tracking-wide leading-relaxed font-light;
+  }
+}
+
+@layer components {
+  .glass {
+    @apply bg-athena-surface/40 backdrop-blur-md border border-athena-surface/20;
+  }
+  
+  .section-container {
+    @apply max-w-7xl mx-auto px-6 py-24 md:py-32 relative;
+  }
+
+  .text-reveal-mask {
+    overflow: hidden;
+    display: block;
+  }
+}
+
+@layer utilities {
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}
+
+@keyframes grain {
+  0%, 100% { transform: translate(0, 0); }
+  10% { transform: translate(-5%, -10%); }
+  20% { transform: translate(-15%, 5%); }
+  30% { transform: translate(7%, -25%); }
+  40% { transform: translate(-5%, 25%); }
+  50% { transform: translate(-15%, 10%); }
+  60% { transform: translate(15%, 0%); }
+  70% { transform: translate(0%, 15%); }
+  80% { transform: translate(3%, 35%); }
+  90% { transform: translate(-10%, 10%); }
+}
+
+.animate-grain {
+  animation: grain 8s steps(10) infinite;
+}
+
+/* Custom Micro-Ripples on Social Icons */
+@keyframes ripple-effect {
+  0% {
+    transform: scale(0.6);
+    opacity: 0.9;
+  }
+  100% {
+    transform: scale(2.6);
+    opacity: 0;
+  }
+}
+.animate-ripple {
+  animation: ripple-effect 0.6s cubic-bezier(0.1, 0.8, 0.3, 1) forwards;
+}
+
+/* Micro-Interaction Link Swipes */
+.link-swipe {
+  position: relative;
+}
+.link-swipe::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background-color: var(--athena-peach-bright);
+  transform: scaleX(0);
+  transform-origin: right;
+  opacity: 0;
+  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.3s ease;
+}
+.link-swipe:hover::after {
+  transform: scaleX(1);
+  transform-origin: left;
+  opacity: 1;
+}
+
+/* Seamless Radial Theme Wipe view transition optimization */
+::view-transition-image-pair(root) {
+  isolation: auto;
+}
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
+}
+
+/* Custom Text Selection Brand Accent colors */
+::selection {
+  background-color: rgba(102, 171, 165, 0.25) !important; /* athena-peach-bright/25 */
+  color: #152532 !important; /* athena-navy */
+}
+.dark ::selection {
+  background-color: rgba(136, 201, 196, 0.25) !important; /* athena-peach/25 */
+  color: #E8E6E3 !important; /* soft eggshell cream */
+}
+
+/* Custom WebKit Scrollbar Styling for all scroll rails on standard & dialog containers */
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(102, 171, 165, 0.25);
+  border-radius: 9999px;
+  border: 1px solid transparent;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(102, 171, 165, 0.5);
+}
+.dark ::-webkit-scrollbar-thumb {
+  background: rgba(136, 201, 196, 0.25);
+}
+.dark ::-webkit-scrollbar-thumb:hover {
+  background: rgba(136, 201, 196, 0.5);
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(102, 171, 165, 0.25) transparent;
+}
+.dark * {
+  scrollbar-color: rgba(136, 201, 196, 0.25) transparent;
+}
+
+/* Unified Keyboard Focus Indicators (focus-visible) */
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible,
+[role="button"]:focus-visible,
+.interactive:focus-visible {
+  outline: none !important;
+  box-shadow: 0 0 0 2px var(--athena-cream), 0 0 0 4px rgba(102, 171, 165, 0.6) !important;
+}
+
+button:focus,
+a:focus,
+input:focus,
+select:focus,
+textarea:focus,
+[role="button"]:focus,
+.interactive:focus {
+  outline: none !important;
+}
+
+/* WebKit Micro-Interaction & Will-Change optimizations */
+button,
+a,
+.interactive,
+.cursor-pointer,
+[role="button"] {
+  will-change: transform, opacity;
+}
+
+/* Tablet Landscape specific adjustments for Section Intro Text to fit perfectly */
+@media (min-width: 768px) and (max-width: 1200px) and (orientation: landscape) {
+  .tablet-landscape-intro {
+    font-size: 15px !important;
+    line-height: 1.45 !important;
+    max-width: 620px !important;
+    margin-top: 6px !important;
+  }
+}
+
+
